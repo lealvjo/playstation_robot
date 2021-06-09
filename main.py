@@ -1,10 +1,10 @@
 from flask import Flask, jsonify
-from app.bots.mercado_livre import botMercadoLivre
+from app.bots.mercado_livre import BotMercadoLivre
 
 
 def create_app():
     app = Flask(__name__)
-    bot_mercado_livre = botMercadoLivre()
+    bot_mercado_livre = BotMercadoLivre()
 
     @app.route('/')
     def index():
@@ -18,6 +18,10 @@ def create_app():
     @app.route('/resultbot', methods=['GET'])
     def route_result_bot():
         return jsonify(bot_mercado_livre.getter_products()), 200
+
+    @app.route('/resultbotfuzzy', methods=['GET'])
+    def route_result_bot_fuzzy():
+        return jsonify(bot_mercado_livre.getter_products_fuzzy()), 200
 
     return app
 

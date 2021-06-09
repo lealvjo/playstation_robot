@@ -1,8 +1,9 @@
 import requests
+from fuzzywuzzy import fuzz
 from bs4 import BeautifulSoup
 
 
-class botMercadoLivre(object):
+class BotMercadoLivre(object):
     def __init__(self):
         self.__web = requests.get("https://lista.mercadolivre.com.br/ps5#D[A:ps5]")
         self.__list_products = []
@@ -27,3 +28,6 @@ class botMercadoLivre(object):
 
     def getter_products(self):
         return self.__list_products
+
+    def getter_products_fuzzy(self):
+        return [list for list in self.__list_products if fuzz.ratio("Console Playstation 5", list['name']) > 50]
