@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 
 class BotMercadoLivre(object):
     def __init__(self):
-        self.__web = requests.get("https://lista.mercadolivre.com.br/ps5#D[A:ps5]")
+        self.__web = requests.get("https://games.mercadolivre.com.br/consoles/ps5")
         self.__list_products = []
 
     def captured_sales_collection(self):
