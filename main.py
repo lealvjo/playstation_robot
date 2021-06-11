@@ -1,5 +1,7 @@
 from flask import Flask, jsonify
-from app.bots.mercado_livre import BotMercadoLivre
+
+from app.controller.playstation import ControllerPlaystation
+from app.services.mercado_livre import BotMercadoLivre
 
 
 def create_app():
@@ -17,11 +19,11 @@ def create_app():
 
     @app.route('/resultbot', methods=['GET'])
     def route_result_bot():
-        return jsonify(bot_mercado_livre.getter_products()), 200
+        return jsonify(ControllerPlaystation.getter_products()), 200
 
     @app.route('/resultbotfuzzy', methods=['GET'])
     def route_result_bot_fuzzy():
-        return jsonify(bot_mercado_livre.getter_products_fuzzy()), 200
+        return jsonify(ControllerPlaystation.getter_products_fuzzy()), 200
 
     return app
 
