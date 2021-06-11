@@ -12,16 +12,16 @@ def create_app():
     def index():
         return jsonify({"Status": "Api treinamento"}), 200
 
-    @app.route('/runbot', methods=['GET'])
+    @app.route('/runbot/mercadolivre', methods=['GET'])
     def route_run_bot():
         bot_mercado_livre.captured_sales_collection()
         return jsonify({"Status": "Bot capturou os dados com sucesso"}), 200
 
-    @app.route('/resultbot', methods=['GET'])
+    @app.route('/resultbot/mercadolivre', methods=['GET'])
     def route_result_bot():
         return jsonify(ControllerPlaystation.getter_products()), 200
 
-    @app.route('/resultbotfuzzy', methods=['GET'])
+    @app.route('/resultbotfuzzy/mercadolivre', methods=['GET'])
     def route_result_bot_fuzzy():
         return jsonify(ControllerPlaystation.getter_products_fuzzy()), 200
 
